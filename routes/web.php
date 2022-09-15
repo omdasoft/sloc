@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Front Routes
+| Front end Routes
 |-------------------------------------------------------------------------
 */
 
@@ -40,6 +40,16 @@ Route::get('/exam-system',[App\Http\Controllers\Front\PagesController::class,'ex
 Route::get('/intro',[App\Http\Controllers\Front\PagesController::class,'intro'])->name('front.intro');
 Route::get('/operating',[App\Http\Controllers\Front\PagesController::class,'operating'])->name('front.operating');
 
-//Auth::routes();
 
+/*
+|--------------------------------------------------------------------------
+| Backend Routes
+|-------------------------------------------------------------------------
+*/
+Route::group(['namespace' => 'Back','middleware' => 'auth'], function() {
+    Route::get('/posts', 'PostController@index');
+    Route::get('/dashboard', DashboardController::class)->name('back.dashboard');
+});
+
+Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
