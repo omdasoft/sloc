@@ -9,8 +9,8 @@
                 <li class="nav-item">
                     <a class="navbar-brand" href="">
                         <img class="brand-logo" alt="modern admin logo"
-                             src="{{asset('front/img/logo2.png')}}">
-                        <h3 class="brand-text">APPEX ADMIN</h3>
+                             src="{{asset('back/images/logo.png')}}">
+                        <h3 class="brand-text">ADMIN</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
