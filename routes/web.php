@@ -48,6 +48,7 @@ Route::get('/operating',[App\Http\Controllers\Front\PagesController::class,'oper
 */
 Route::group(['namespace' => 'Back','middleware' => 'auth'], function() {
     Route::resource('posts', PostController::class);
+    Route::resource('messages', MessageController::class);
     Route::get('/dashboard', DashboardController::class)->name('back.dashboard');
 });
 

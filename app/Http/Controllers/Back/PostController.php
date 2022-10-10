@@ -49,7 +49,7 @@ class PostController extends Controller
         $post->slug = $this->slug($request->title);
         $post->save();
 
-        return redirect()->route('posts.index')->with('success',__('lang.post.created'));
+        return redirect()->route('posts.index')->with('success',__('lang.created'));
     }
 
     public function slug($string, $separator = '-') {
@@ -121,7 +121,7 @@ class PostController extends Controller
         $post->slug = $this->slug($request->title);
         $post->save();
 
-        return redirect()->route('posts.index')->with('success',__('lang.post.updated'));
+        return redirect()->route('posts.index')->with('success',__('lang.updated'));
 
     }
 
@@ -141,7 +141,7 @@ class PostController extends Controller
     
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success',__('lang.post.deleted'));
+        return redirect()->route('posts.index')->with('success',__('lang.deleted'));
 
         //return to index page with deleted msg
     }

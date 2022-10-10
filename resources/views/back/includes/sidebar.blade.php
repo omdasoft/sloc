@@ -22,11 +22,10 @@
             </li>
             <li class="nav-item"><a href=""><i class="la la-envelope"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">الرسائل  </span>
-                <span
-                    class="badge badge badge-success badge-pill float-right mr-2">60</span>
+                <span class="badge badge badge-success badge-pill float-right mr-2">{{ \App\Models\Message::count() }}</span>
             </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href="#" data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    <li class="active"><a class="menu-item" href="{{ route('messages.index')}}" data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
                 </ul>
             </li>
