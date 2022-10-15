@@ -50,7 +50,10 @@ Route::group(['namespace' => 'Back','middleware' => 'auth'], function() {
     Route::resource('posts', PostController::class);
     Route::resource('messages', MessageController::class);
     Route::post('/replay', 'MessageController@reply')->name('message.reply');
-    Route::get('/dashboard', DashboardController::class)->name('back.dashboard');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+    Route::get('/profile', 'DashboardController@editProfile')->name('profile.edit');
+    Route::post('/profile', 'DashboardController@updateProfile')->name('profile.update');
+
 });
 
 Auth::routes();

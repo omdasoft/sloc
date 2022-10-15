@@ -4,10 +4,10 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a
-                        class="nav-link nav-menu-main menu-toggle hidden-xs" href="{{route('back.dashboard')}}"><i
+                        class="nav-link nav-menu-main menu-toggle hidden-xs" href="{{route('dashboard.index')}}"><i
                             class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="">
+                    <a class="navbar-brand" href="{{route('dashboard.index')}}">
                         <img class="brand-logo" alt="modern admin logo"
                              src="{{asset('back/images/logo.png')}}">
                         <h3 class="brand-text">ADMIN</h3>
@@ -33,7 +33,7 @@
                             <i class="ficon ft-user" style="font-size:45px"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href=""><i
+                        <a class="dropdown-item" href="{{route('profile.edit')}}"><i
                                     class="ft-user"></i> تعديل الملف الشحصي </a>
                             <div class="dropdown-divider"></div>
 
