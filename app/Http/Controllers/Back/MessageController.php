@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Mail;
+use App\Mail\MydemoMil;
 use App\Models\Message;
 class MessageController extends Controller
 {
@@ -16,7 +17,7 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::latest()->paginate(15);
-
+        
         return view('back.messages.index', compact('messages'));
     }
 
@@ -75,6 +76,29 @@ class MessageController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function reply(Request $request) {
+        $email= $request->email;
+        $id = $request->id;
+        $details = [
+            'title' => 'الرخصة السودانية لتشغيل الحاسوب - الدعم الفني',
+            'reply' => $request->reply,
+            'url'   => 'http://sloc.gov.sd'
+        ];
+
+        Mail::to($email)->send(new MydemoMil($details)); 
+
+        $this->updateMessageStatus($id);
+
+
+        return redirect()->route('messages.index')->with('success', __('lang.mail_sent'));
+    }
+
+    public function updateMessageStatus($id) {
+        $message = Message::findOrFail($id);
+        $message->replied = 1;
+        $message->save();
     }
 
     /**

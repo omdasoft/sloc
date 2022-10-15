@@ -54,6 +54,7 @@
                                                 <th>التاريخ</th>
                                                 <th>#</th>
                                                 <th>#</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -63,6 +64,7 @@
                                                 <td>{{ $message->phone }}</td>
                                                 <td>{{ $message->email }}</td>
                                                 <td>{{ $message->date }}</td>
+                                                <td><span class="badge {{$message->replied == 1 ? "badge-success":"badge-secondary"}}">{{ $message->replied == 1 ? "تم الرد":"لم يتم الرد"}}</span></td>
                                                 <td>
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <a href="{{ route('messages.show', $message->id) }}" class="btn btn-outline-success btn-min-width box-shadow-3 mr-1 mb-1">عرض الرسالة</a>

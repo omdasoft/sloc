@@ -3,12 +3,17 @@
 @endsection
 @section('style') 
     <style type="text/css">
+        .card {
+            padding-right: 10px;
+        }
         .message{
             width: 100%;
             min-height: 200px;
             padding: 10px;
             border: 2px solid #ccc;
-            margin-right: 10px;
+        }
+        .message-reply{
+            margin-top: 10px;
         }
         .lead{
             margin-top: 20px;
@@ -68,7 +73,20 @@
                                             </div>
                                         </div>
                                         <p class="lead">{{$message->message}}</p>
-                                        <button class="btn btn-default btn-sm pull-left">رد</button>
+                                    <button class="btn btn-default btn-sm pull-left reply {{$message->replied == 1 ? "hidden":""}}">رد</button>
+                                    </div>
+                                    <div class="message-reply">
+                                        <form method="POST" action="{{ route('message.reply') }}">
+                                            @csrf
+                                            <input type="hidden" name="email" value="{{$message->email}}">
+                                            <input type="hidden" name="id" value="{{$message->id}}">
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="10" name="reply" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-warning btn-sm pull-left">ارسال</button>
+                                            </div>
+                                        <form>
                                     </div>
                                 </div>
                             </div>
@@ -83,4 +101,12 @@
  
 @section('script')
 <script src="/js/app.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.message-reply').hide();
+        $('.reply').click(function() {
+            $('.message-reply').slideToggle();
+        });
+    });
+</script>
 @endsection
